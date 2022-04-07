@@ -10,11 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
         register.setOnClickListener(this);
     }
 
@@ -96,7 +97,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Users users = new Users(username,age,email);
-
+                    FirebaseDatabase.getInstance().getReference("Users")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(MainActivity.this,"User has been registered successfully !",Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }else{
+                                Toast.makeText(MainActivity.this,"Failed to registered try gain", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }
+                    });
                 }
             }
         });
