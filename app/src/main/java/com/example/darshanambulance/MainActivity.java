@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button register;
+    private Button register,login;
     private EditText et_username, et_age,et_email,et_password;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         register = (Button) findViewById(R.id.register_btn);
+        login = (Button) findViewById(R.id.login_btn);
         et_username = (EditText) findViewById(R.id.user_name);
         et_age = (EditText) findViewById(R.id.user_age);
         et_email = (EditText) findViewById(R.id.user_email);
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         register.setOnClickListener(this);
+        login.setOnClickListener(this);
     }
 
     @Override
@@ -46,7 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.register_btn:
                  registerUser();
                  break;
-
+            case R.id.login_btn:
+                Intent intent = new Intent(MainActivity.this, LoginUser.class);
+                startActivity(intent);
+                break;
         }
     }
 

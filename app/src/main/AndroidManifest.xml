@@ -9,13 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Darshanambulance">
-        <activity android:name=".RegisterUser"></activity>
+        <activity android:name=".ContactSupport" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".AmbulanceMap" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".FindAmbulance" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Dashboard"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".LoginUser"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".RegisterUser" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
