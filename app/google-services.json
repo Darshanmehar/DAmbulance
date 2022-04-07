@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "767852653219",
+    "project_id": "darshanambulance-58bf4",
+    "storage_bucket": "darshanambulance-58bf4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767852653219:android:594cae8c5e0d22d0d0ad16",
+        "android_client_info": {
+          "package_name": "com.example.darshanambulance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767852653219-8e6jk8nkhdpu088jfee1dt25bm2u4qv0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgNN7jFpEqIv0Kx-yRHZpNQcQnDiAWXLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767852653219-8e6jk8nkhdpu088jfee1dt25bm2u4qv0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
