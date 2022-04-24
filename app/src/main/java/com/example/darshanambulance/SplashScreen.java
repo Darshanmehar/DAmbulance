@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.darshanambulance.activity.Dashboard;
+import com.example.darshanambulance.utility.preferences;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
@@ -17,10 +20,17 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 //This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(i);
-                // close this activity
-                finish();
+                // if user already loged in then this condition will fire
+                if (preferences.getDataLogin(getApplicationContext())) {
+                    if (preferences.getDataAs(getApplicationContext()).equals("user")) {
+                        startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                        finish();
+                    }
+                }else {
+                    Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         }, 3000);
     }

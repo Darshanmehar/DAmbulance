@@ -12,10 +12,18 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.darshanambulance.activity.Dashboard;
+import com.example.darshanambulance.utility.preferences;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginUser extends AppCompatActivity implements View.OnClickListener {
 
@@ -86,7 +94,33 @@ public class LoginUser extends AppCompatActivity implements View.OnClickListener
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                       // redirect to user dashboard
-                      startActivity(new Intent(LoginUser.this,Dashboard.class));
+                      //startActivity(new Intent(LoginUser.this,Dashboard.class));
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+
+                    reference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for(DataSnapshot datas: dataSnapshot.getChildren()){
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                String uid = user.getUid();
+                                String emaildata=datas.child("email").getValue().toString();
+                                String fullname=datas.child("fullname").getValue().toString();
+                                //Toast.makeText(getApplicationContext(),familyname,Toast.LENGTH_LONG).show();
+                                preferences.setDataLogin(LoginUser.this, true);
+                                preferences.setDataAs(LoginUser.this, "user");
+                                preferences.setDataUserid(LoginUser.this,uid);
+                                preferences.setDataEmail(LoginUser.this,emaildata);
+                                preferences.setDataFullname(LoginUser.this,fullname);
+                                startActivity(new Intent(LoginUser.this, Dashboard.class));
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
+
+
+
                 }else{
                     Toast.makeText(LoginUser.this,"Failed to login try gain", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">767852653219-8e6jk8nkhdpu088jfee1dt25bm2u4qv0.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">767852653219</string>
+    <string name="google_api_key" translatable="false">AIzaSyCgNN7jFpEqIv0Kx-yRHZpNQcQnDiAWXLs</string>
+    <string name="google_app_id" translatable="false">1:767852653219:android:594cae8c5e0d22d0d0ad16</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCgNN7jFpEqIv0Kx-yRHZpNQcQnDiAWXLs</string>
+    <string name="google_storage_bucket" translatable="false">darshanambulance-58bf4.appspot.com</string>
+    <string name="project_id" translatable="false">darshanambulance-58bf4</string>
+</resources>

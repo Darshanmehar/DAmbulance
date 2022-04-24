@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.darshanambulance">
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_main_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_main_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Darshanambulance">
-        <activity android:name=".ContactSupport" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".AmbulanceMap" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".FindAmbulance" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.UpdateSuccess"></activity>
+        <activity android:name=".activity.ProfileUpdate" />
+        <activity android:name=".activity.ViewLocation" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyC7gJ1u6OPBb5DL2brSmCbHClFnd8dau_w" />
         <activity
-            android:name=".Dashboard"
+            android:name=".activity.ContactSupport"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activity.AmbulanceMap"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activity.FindAmbulance" />
+        <activity
+            android:name=".activity.Dashboard"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".LoginUser"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".RegisterUser" />
+        <activity
+            android:name=".RegisterUser"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -31,5 +47,4 @@
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
-
 </manifest>
